@@ -18,11 +18,12 @@ class AppTheme {
     colorScheme: const ColorScheme.dark(
       primary: AppPalette.darkPrimary,
       secondary: AppPalette.accent,
-      error: AppPalette.errorColor,
+      error: AppPalette.errorColor,   
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
       scrolledUnderElevation: 0,
     ),
+    
   );
 }
