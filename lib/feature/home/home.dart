@@ -1,3 +1,4 @@
+import 'package:ai_recommend_gift/feature/gift_form/gift_form.dart';
 import 'package:ai_recommend_gift/feature/theme/presention/theme_toggle.dart';
 import 'package:flutter/material.dart';
 
@@ -18,10 +19,7 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/images/download.png'),
-            ),
+            Image.asset('assets/images/download.png', width: 400, height: 400),
             const Text(
               'Let AI Help You Choose the Perfect Gift',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -29,7 +27,7 @@ class Home extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Navigate to the next screen or perform an action
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> GiftForm()));
               },
               child: const Text('Get Started'),
             ),
