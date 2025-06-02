@@ -8,6 +8,7 @@ class GiftForm extends StatelessWidget {
   final PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
+    String? gender;
     return Scaffold(
       appBar: AppBar(
         title: const Text('AI Recommend Gift'),
@@ -18,11 +19,26 @@ class GiftForm extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
-          CustomRadioPage(options: ['1', '2']), //gender page
-          CustomRadioPage(options: ['1', '2']), //age page
-          CustomRadioPage(options: ['1', '2']), //relationship page
-          CustomRadioPage(options: ['1', '2']), //budget page
-          CustomRadioPage(options: ['1', '2']), //occasion page
+          CustomRadioPage(
+            options: ['1', '2'],
+            onOptionSelected: (string) => gender = string,
+          ), //gender page
+          CustomRadioPage(
+            options: ['1', '2'],
+            onOptionSelected: (string) {},
+          ), //age page
+          CustomRadioPage(
+            options: ['1', '2'],
+            onOptionSelected: (string) {},
+          ), //relationship page
+          CustomRadioPage(
+            options: ['1', '2'],
+            onOptionSelected: (string) {},
+          ), //budget page
+          CustomRadioPage(
+            options: ['1', '2'],
+            onOptionSelected: (string) {},
+          ), //occasion page
           CustomCheckboxPage(options: ['1', '2']), //interests/hobbies page
         ],
       ),
@@ -51,10 +67,16 @@ class GiftForm extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  pageController.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
+                  if (gender == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Please select')),
+                    );
+                  } else {
+                    pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  }
                 },
                 child: const Text('Next'),
               ),

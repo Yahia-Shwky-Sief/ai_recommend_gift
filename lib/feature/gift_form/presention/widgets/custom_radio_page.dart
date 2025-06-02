@@ -4,8 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomRadioPage extends StatelessWidget {
   final List<String> options;
+  final Function(String) onOptionSelected;
 
-  const CustomRadioPage({super.key, required this.options});
+  const CustomRadioPage({super.key, required this.options, required this.onOptionSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,9 @@ class CustomRadioPage extends StatelessWidget {
                 final isSelected = selectedIndex == index;
 
                 return GestureDetector(
-                  onTap: () => cubit.selectOption(index),
+                  onTap: () { cubit.selectOption(index);
+                    onOptionSelected(options[index]);
+                  },
                   child: Container(
                     margin: EdgeInsets.only(bottom: 12),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
