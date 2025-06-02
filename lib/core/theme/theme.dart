@@ -1,25 +1,28 @@
+
 import 'package:ai_recommend_gift/core/theme/app_palette.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static final darkThemeMode = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: AppPalette.backgroundColor,
-    primaryColor: AppPalette.greyColor,
-    colorScheme: const ColorScheme.dark(
-      primary: AppPalette.whiteColor,
-      secondary: AppPalette.greyColor,
-      surface: AppPalette.backgroundColor,
+  static final lightThemeMode = ThemeData.light().copyWith(
+    colorScheme: const ColorScheme.light(
+      primary: AppPalette.primary,
+      secondary: AppPalette.accent,
       error: AppPalette.errorColor,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppPalette.backgroundColor,
       elevation: 0,
       scrolledUnderElevation: 0,
     ),
-    textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: AppPalette.whiteColor,
-      cursorColor: AppPalette.whiteColor,
-      selectionHandleColor: AppPalette.whiteColor,
+  );
+  static final darkThemeMode = ThemeData.dark().copyWith(
+    colorScheme: const ColorScheme.dark(
+      primary: AppPalette.darkPrimary,
+      secondary: AppPalette.accent,
+      error: AppPalette.errorColor,
+    ),
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      scrolledUnderElevation: 0,
     ),
   );
 }
