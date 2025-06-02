@@ -5,14 +5,7 @@ import '../../../core/services/theme_service.dart';
 class ThemeCubit extends Cubit<ThemeMode> {
   final ThemeService _themeService;
 
-  ThemeCubit(this._themeService) : super(ThemeMode.light) {
-    _loadTheme();
-  }
-
-  void _loadTheme() async {
-    final isDark = await _themeService.loadTheme();
-    emit(isDark ? ThemeMode.dark : ThemeMode.light);
-  }
+  ThemeCubit(this._themeService, ThemeMode initialTheme) : super(initialTheme);
 
   void toggleTheme() async {
     final newTheme = state == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;

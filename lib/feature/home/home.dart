@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 50,
-              backgroundImage: NetworkImage('https://example.com/avatar.png'),
+              backgroundImage: AssetImage('assets/images/download.png'),
             ),
             const Text(
               'Let AI Help You Choose the Perfect Gift',
