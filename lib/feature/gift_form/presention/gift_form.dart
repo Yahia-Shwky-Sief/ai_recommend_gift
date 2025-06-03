@@ -9,6 +9,11 @@ class GiftForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? gender;
+    String? age;
+    String? relationship;
+    String? budget;
+    String? occasion;
+    List? interests;
     return Scaffold(
       appBar: AppBar(
         title: const Text('AI Recommend Gift'),
@@ -20,26 +25,53 @@ class GiftForm extends StatelessWidget {
         controller: pageController,
         children: [
           CustomRadioPage(
-            options: [['man','assets/images/download.png'], ['woman','assets/images/download.png']],
+            title: 'Gender',
+            options: [
+              ['assets/images/male_9416212.png', 'male'],
+              ['assets/images/mother_15762415.png', 'female'],
+            ],
             onOptionSelected: (string) => gender = string,
           ), //gender page
           CustomRadioPage(
-            options: [['1'], ['2']],
-            onOptionSelected: (string) {},
+            title: 'Age',
+            options: [
+              ['assets/images/rocking-horse_5822325.png', 'child'],
+              ['assets/images/family_2640920.png', 'adult'],
+            ],
+            onOptionSelected: (string) => age = string,
           ), //age page
           CustomRadioPage(
-            options: [['1'], ['2']],
-            onOptionSelected: (string) {},
+            title: 'Relationship',
+            options: [
+              ['assets/images/meet_7851717.png', 'Close'],
+              ['assets/images/employee_2245072.png', 'Acquaintance'],
+            ],
+            onOptionSelected: (string) => relationship = string,
           ), //relationship page
           CustomRadioPage(
-            options: [['1'], ['2']],
-            onOptionSelected: (string) {},
+            title: 'Budget',
+            options: [
+              ['assets/images/low-price.png', '>500'],
+              ['assets/images/price-tag_17002238.png', '<500'],
+            ],
+            onOptionSelected: (string) => budget = string,
           ), //budget page
           CustomRadioPage(
-            options: [['1'], ['2']],
-            onOptionSelected: (string) {},
+            title: 'Occasion',
+            options: [
+              ['assets/images/birthday-cake.png', 'birthday'],
+              ['assets/images/celebrating-eid.png', 'el-eid'],
+            ],
+            onOptionSelected: (string) => occasion = string,
           ), //occasion page
-          CustomCheckboxPage(options: ['1', '2']), //interests/hobbies page
+          CustomCheckboxPage(
+            title: 'interests/hobbies',
+            options: [
+              ['assets/images/birthday-cake.png', 'birthday'],
+              ['assets/images/celebrating-eid.png', 'el-eid'],
+            ],
+            onOptionSelected: (list) => interests = list,
+          ), //interests/hobbies page
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -67,7 +99,12 @@ class GiftForm extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  if (gender == null) {
+                  if (pageController.page == 0 && gender == null ||
+                      pageController.page == 1 && age == null ||
+                      pageController.page == 2 && relationship == null ||
+                      pageController.page == 3 && budget == null ||
+                      pageController.page == 4 && occasion == null ||
+                      pageController.page == 5 && interests == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Please select')),
                     );

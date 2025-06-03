@@ -10,9 +10,4 @@ class MultiSelectCubit extends Cubit<List<bool>> {
     newState[index] = !newState[index];
     emit(newState);
   }
-
-  /// (Optional) Clear all selections.
-  void clearAll() {
-    emit(List<bool>.filled(state.length, false));
-  }
 }

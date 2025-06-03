@@ -1,73 +1,78 @@
-// lib/pages/custom_checkbox_page.dart
 import 'package:ai_recommend_gift/feature/gift_form/logic/checkbox_cubit/checkbox_cubit.dart';
+import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class CustomCheckboxPage extends StatelessWidget {
-  final List<String> options;
-  const CustomCheckboxPage({super.key, required this.options});
+  final List<List> options;
+  final Function(List) onOptionSelected;
+  final String title;
+  const CustomCheckboxPage({
+    super.key,
+    required this.options,
+    required this.onOptionSelected,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MultiSelectCubit(options.length),
       child: BlocBuilder<MultiSelectCubit, List<bool>>(
-          builder: (context, selectedList) {
-            final cubit = context.read<MultiSelectCubit>();
+        builder: (context, selectedList) {
+          final cubit = context.read<MultiSelectCubit>();
 
-            return ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-              itemCount: options.length,
-              itemBuilder: (context, index) {
-                final isChecked = selectedList[index];
-
-                return GestureDetector(
-                  onTap: () => cubit.toggleOption(index),
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 12),
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                    decoration: BoxDecoration(
-                      color: isChecked ? Colors.green.shade100 : Colors.white,
-                      border: Border.all(
-                        color: isChecked ? Colors.green : Colors.grey,
-                        width: isChecked ? 2 : 1,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        if (isChecked)
-                          BoxShadow(
-                            color: Colors.green.withOpacity(0.3),
-                            blurRadius: 6,
-                            offset: Offset(0, 2),
-                          ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          options[index],
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight:
-                                isChecked ? FontWeight.bold : FontWeight.normal,
-                          ),
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  width: options.length * 200 + 32,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(16),
+                    itemCount: options.length,
+                    itemBuilder: (context, index) {
+                      final isSelected = selectedList[index];
+                      return GestureDetector(
+                        onTap: () {
+                          cubit.toggleOption(index);
+                          List selectedOptions = [];
+                          for (var i = 0; i < cubit.state.length; i++) {
+                            if (cubit.state[i]) {
+                              selectedOptions.add(options[i][1]);
+                            }
+                          }
+                          onOptionSelected(selectedOptions);
+                        },
+                        child: buttonWidget(
+                          data: options[index],
+                          isSelected: isSelected,
+                          context: context,
+                          isRadioButton: false,
                         ),
-                        Icon(
-                          isChecked
-                              ? Icons.check_box
-                              : Icons.check_box_outline_blank,
-                          color: isChecked ? Colors.green : Colors.grey,
-                        ),
-                      ],
+                      );
+                    },
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 300,
+                      mainAxisExtent: 300,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
                     ),
                   ),
-                );
-              },
-            );
-          },
-        ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
