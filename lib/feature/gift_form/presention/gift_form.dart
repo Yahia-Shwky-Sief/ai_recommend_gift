@@ -20,23 +20,23 @@ class GiftForm extends StatelessWidget {
         controller: pageController,
         children: [
           CustomRadioPage(
-            options: ['1', '2'],
+            options: [['man','assets/images/download.png'], ['woman','assets/images/download.png']],
             onOptionSelected: (string) => gender = string,
           ), //gender page
           CustomRadioPage(
-            options: ['1', '2'],
+            options: [['1'], ['2']],
             onOptionSelected: (string) {},
           ), //age page
           CustomRadioPage(
-            options: ['1', '2'],
+            options: [['1'], ['2']],
             onOptionSelected: (string) {},
           ), //relationship page
           CustomRadioPage(
-            options: ['1', '2'],
+            options: [['1'], ['2']],
             onOptionSelected: (string) {},
           ), //budget page
           CustomRadioPage(
-            options: ['1', '2'],
+            options: [['1'], ['2']],
             onOptionSelected: (string) {},
           ), //occasion page
           CustomCheckboxPage(options: ['1', '2']), //interests/hobbies page
