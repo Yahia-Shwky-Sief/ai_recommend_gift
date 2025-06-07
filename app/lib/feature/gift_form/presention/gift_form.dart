@@ -1,5 +1,7 @@
 import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/custom_checkbox_page.dart';
 import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/custom_radio_page.dart';
+import 'package:ai_recommend_gift/feature/home/home.dart';
+import 'package:ai_recommend_gift/feature/results/presention/results.dart';
 import 'package:ai_recommend_gift/feature/theme/presention/theme_toggle.dart';
 import 'package:flutter/material.dart';
 
@@ -107,6 +109,20 @@ class GiftForm extends StatelessWidget {
                       pageController.page == 5 && interests == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Please select')),
+                    );
+                  } else if (pageController.page == 5) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => Results(
+                          gender: gender!,
+                          age: age!,
+                          relationship: relationship!,
+                          budget: budget!,
+                          occasion: occasion!,
+                          interests: interests!,
+                        ),
+                      ),
                     );
                   } else {
                     pageController.nextPage(
