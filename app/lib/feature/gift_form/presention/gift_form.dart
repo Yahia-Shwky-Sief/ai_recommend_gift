@@ -1,6 +1,5 @@
 import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/custom_checkbox_page.dart';
 import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/custom_radio_page.dart';
-import 'package:ai_recommend_gift/feature/home/home.dart';
 import 'package:ai_recommend_gift/feature/results/presention/results.dart';
 import 'package:ai_recommend_gift/feature/theme/presention/theme_toggle.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ class GiftForm extends StatelessWidget {
     String? relationship;
     String? budget;
     String? occasion;
-    List? interests;
+    List<String>? interests;
     return Scaffold(
       appBar: AppBar(
         title: const Text('AI Recommend Gift'),

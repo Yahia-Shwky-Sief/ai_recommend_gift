@@ -37,14 +37,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
             themeMode: themeMode,
-            home: Results(
-              gender: 'male',
-              age: '18',
-              relationship: 'friend',
-              budget: '500',
-              occasion: 'birhtday',
-              interests: ['proggramming'],
-            ),
+            home: Home(),
           );
         },
       ),

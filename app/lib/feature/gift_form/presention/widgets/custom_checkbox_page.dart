@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomCheckboxPage extends StatelessWidget {
   final List<List> options;
-  final Function(List) onOptionSelected;
+  final Function(List<String>) onOptionSelected;
   final String title;
   const CustomCheckboxPage({
     super.key,
@@ -43,7 +43,7 @@ class CustomCheckboxPage extends StatelessWidget {
                       return GestureDetector(
                         onTap: () {
                           cubit.toggleOption(index);
-                          List selectedOptions = [];
+                          List<String> selectedOptions = [];
                           for (var i = 0; i < cubit.state.length; i++) {
                             if (cubit.state[i]) {
                               selectedOptions.add(options[i][1]);

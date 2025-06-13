@@ -45,7 +45,7 @@ class CustomRadioPage extends StatelessWidget {
                       return GestureDetector(
                         onTap: () {
                           cubit.selectOption(index);
-                          onOptionSelected(options[index][0]);
+                          onOptionSelected(options[index][1]);
                         },
                         child: buttonWidget(
                           data: options[index],
