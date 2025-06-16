@@ -21,7 +21,7 @@ class CustomCheckboxPage extends StatelessWidget {
       child: BlocBuilder<MultiSelectCubit, List<bool>>(
         builder: (context, selectedList) {
           final cubit = context.read<MultiSelectCubit>();
-
+          // Initialize selectedList based on optionSelectedValues
           return SizedBox(
             width: MediaQuery.of(context).size.width,
             height: double.infinity,

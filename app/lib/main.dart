@@ -1,6 +1,6 @@
 import 'package:ai_recommend_gift/core/services/theme_service.dart';
+import 'package:ai_recommend_gift/core/theme/theme.dart';
 import 'package:ai_recommend_gift/feature/home/home.dart';
-import 'package:ai_recommend_gift/feature/results/presention/results.dart';
 import 'package:ai_recommend_gift/feature/theme/cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
         builder: (context, themeMode) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
+            theme: AppTheme.lightThemeMode,
+            darkTheme: AppTheme.darkThemeMode,
             themeMode: themeMode,
             home: Home(),
           );

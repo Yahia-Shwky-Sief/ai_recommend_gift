@@ -4,26 +4,19 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final lightThemeMode = ThemeData.light().copyWith(
-    colorScheme: const ColorScheme.light(
-      primary: AppPalette.primary,
-      secondary: AppPalette.accent,
-      error: AppPalette.errorColor,
-    ),
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      scrolledUnderElevation: 0,
-    ),
-  );
-  static final darkThemeMode = ThemeData.dark().copyWith(
-    colorScheme: const ColorScheme.dark(
-      primary: AppPalette.darkPrimary,
-      secondary: AppPalette.accent,
-      error: AppPalette.errorColor,   
-    ),
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      scrolledUnderElevation: 0,
-    ),
+    scaffoldBackgroundColor: Colors.white,
+    brightness: Brightness.light,
+    primaryColor: AppPalette.primary,
+    primaryColorLight: AppPalette.lightPrimary,
+    primaryColorDark: AppPalette.darkPrimary,
     
+  );
+
+  static final darkThemeMode = ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: AppPalette.darkBackground,
+    brightness: Brightness.dark,
+    primaryColor: AppPalette.primary,
+    primaryColorLight: AppPalette.lightPrimary,
+    primaryColorDark: AppPalette.darkPrimary,
   );
 }

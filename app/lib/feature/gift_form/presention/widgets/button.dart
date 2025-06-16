@@ -8,7 +8,7 @@ Widget buttonWidget({
 }) {
   return Container(
     width: 200,
-    height: 300,
+    height: 200,
     decoration: BoxDecoration(
       border: Border.all(
         color: isSelected
@@ -40,12 +40,22 @@ Widget buttonWidget({
             ],
           ),
         ),
-        Image.asset(data[0], width: 150, height: 150, fit: BoxFit.cover),
-        Text(
-          data[1],
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(data[0], width: 130, height: 130, fit: BoxFit.cover),
+              SizedBox(height: 8),
+              Text(
+                data[1],
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
           ),
         ),
       ],

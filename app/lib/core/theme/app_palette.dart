@@ -7,4 +7,6 @@ class AppPalette {
   static const Color accent = Color(0xFF7C4DFF);
   static const Color errorColor = Colors.redAccent;
   static const Color transparentColor = Colors.transparent;
+  static const Color darkBackground = Color(0xFF121212);
+  static const Color lightBackground = Colors.white;
 }

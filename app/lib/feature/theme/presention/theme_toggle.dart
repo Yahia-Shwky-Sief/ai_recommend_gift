@@ -11,7 +11,7 @@ class ThemeToggle extends StatelessWidget {
     return IconButton(
       icon: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, theme) {
-          return Icon(theme == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode);
+          return Icon(theme == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode);
         },
       ),
       onPressed: () => context.read<ThemeCubit>().toggleTheme(),

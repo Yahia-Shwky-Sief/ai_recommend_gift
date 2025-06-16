@@ -1,4 +1,3 @@
-import 'package:ai_recommend_gift/feature/results/logic/get_results.dart';
 import 'package:ai_recommend_gift/feature/results/model/gift_recommendtion_model.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +34,7 @@ class Results extends StatelessWidget {
           ),
           SizedBox(height: 20),
           FutureBuilder(
-            future: getResults(
+            future: getResultsMockup(
               gender: gender,
               age: age,
               relationship: relationship,
@@ -47,7 +46,8 @@ class Results extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator();
               } else if (snapshot.hasData) {
-                final List<GiftRecommendation> gifts = parseGiftRecommendationsResponse(snapshot.data.toString());
+                //final List<GiftRecommendation> gifts = parseGiftRecommendationsResponse(snapshot.data.toString());
+                final List<GiftRecommendation> gifts = snapshot.data as List<GiftRecommendation>;
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: gifts.length,
@@ -73,4 +73,32 @@ class Results extends StatelessWidget {
       ),
     );
   }
+}
+
+getResultsMockup({
+  required gender,
+  required age,
+  required relationship,
+  required budget,
+  required occasion,
+  required interests,
+}) async {
+  await Future.delayed(Duration(seconds: 2));
+  return [
+    GiftRecommendation(
+      giftName: 'Smart Watch',
+      priceRange: '\$100 - \$200',
+      description: 'A stylish smart watch with fitness tracking features.',
+    ),
+    GiftRecommendation(
+      giftName: 'Wireless Earbuds',
+      priceRange: '\$50 - \$150',
+      description: 'High-quality wireless earbuds with noise cancellation.',
+    ),
+    GiftRecommendation(
+      giftName: 'Personalized Mug',
+      priceRange: '\$10 - \$30',
+      description: 'A custom mug with a personal message or photo.',
+    ),
+  ];
 }

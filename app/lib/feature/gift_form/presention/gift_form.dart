@@ -1,3 +1,4 @@
+import 'package:ai_recommend_gift/core/widgets/logo.dart';
 import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/custom_checkbox_page.dart';
 import 'package:ai_recommend_gift/feature/gift_form/presention/widgets/custom_radio_page.dart';
 import 'package:ai_recommend_gift/feature/results/presention/results.dart';
@@ -9,17 +10,19 @@ class GiftForm extends StatelessWidget {
   final PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
+    // Variables to hold the selected options
+    // These will be used to pass data to the Results page
     String? gender;
     String? age;
     String? relationship;
     String? budget;
     String? occasion;
     List<String>? interests;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI Recommend Gift'),
+        title: logo(context),
         actions: [ThemeToggle()],
-        automaticallyImplyLeading: false,
       ),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
@@ -28,24 +31,28 @@ class GiftForm extends StatelessWidget {
           CustomRadioPage(
             title: 'Gender',
             options: [
-              ['assets/images/male_9416212.png', 'male'],
-              ['assets/images/mother_15762415.png', 'female'],
+              ['assets/images/male.png', 'male'],
+              ['assets/images/female.png', 'female'],
             ],
             onOptionSelected: (string) => gender = string,
           ), //gender page
           CustomRadioPage(
-            title: 'Age',
+            title: 'Age Group',
             options: [
-              ['assets/images/rocking-horse_5822325.png', 'child'],
-              ['assets/images/family_2640920.png', 'adult'],
+              ['assets/images/child.png', 'child'],
+              ['assets/images/teenager.png', 'teenager'],
+              ['assets/images/adult.png', 'adult'],
+              ['assets/images/senior-citzen.png', 'senior'],
             ],
             onOptionSelected: (string) => age = string,
           ), //age page
           CustomRadioPage(
             title: 'Relationship',
             options: [
-              ['assets/images/meet_7851717.png', 'Close'],
-              ['assets/images/employee_2245072.png', 'Acquaintance'],
+              ['assets/images/friends.png', 'friend'],
+              ['assets/images/family.png', 'family'],
+              ['assets/images/colleague.png', 'colleague'],
+              ['assets/images/lovers.png', 'partner'],
             ],
             onOptionSelected: (string) => relationship = string,
           ), //relationship page
@@ -53,7 +60,7 @@ class GiftForm extends StatelessWidget {
             title: 'Budget',
             options: [
               ['assets/images/low-price.png', '>500'],
-              ['assets/images/price-tag_17002238.png', '<500'],
+              ['assets/images/high-price.png', '<500'],
             ],
             onOptionSelected: (string) => budget = string,
           ), //budget page
@@ -68,8 +75,10 @@ class GiftForm extends StatelessWidget {
           CustomCheckboxPage(
             title: 'interests/hobbies',
             options: [
-              ['assets/images/birthday-cake.png', 'birthday'],
-              ['assets/images/celebrating-eid.png', 'el-eid'],
+              ['assets/images/art.png', 'Art'],
+              ['assets/images/sports.png', 'Sports'],
+              ['assets/images/music.png', 'Music'],
+              ['assets/images/tech.png', 'Tech'],
             ],
             onOptionSelected: (list) => interests = list,
           ), //interests/hobbies page
