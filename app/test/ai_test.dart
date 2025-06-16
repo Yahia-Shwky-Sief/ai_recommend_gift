@@ -7,7 +7,6 @@ void main() {
   // For example, you might want to test the AI's response to certain inputs,
   // or verify that it correctly recommends gifts based on user preferences.
   test('test ai response function', () async {
-    print("AI test placeholder");
     await getResults(
       gender: '',
       age: '',

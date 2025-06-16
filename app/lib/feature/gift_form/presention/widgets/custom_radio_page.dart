@@ -42,7 +42,6 @@ class CustomRadioPage extends StatelessWidget {
                       itemCount: options.length,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        print(selectedIndex);
                         bool isSelected = selectedIndex == index;
                         return GestureDetector(
                           onTap: () {

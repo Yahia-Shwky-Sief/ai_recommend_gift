@@ -40,8 +40,8 @@ class GiftForm extends StatelessWidget {
             title: 'Age Group',
             options: [
               ['assets/images/child.png', 'child'],
-              ['assets/images/teenager.png', 'teenager'],
-              ['assets/images/adult.png', 'adult'],
+              ['assets/images/teenagers.png', 'teenager'],
+              ['assets/images/adults.png', 'adult'],
               ['assets/images/senior-citzen.png', 'senior'],
             ],
             onOptionSelected: (string) => age = string,
@@ -50,8 +50,8 @@ class GiftForm extends StatelessWidget {
             title: 'Relationship',
             options: [
               ['assets/images/friends.png', 'friend'],
-              ['assets/images/family.png', 'family'],
-              ['assets/images/colleague.png', 'colleague'],
+              ['assets/images/familt.png', 'family'],
+              ['assets/images/colugaess.png', 'colleague'],
               ['assets/images/lovers.png', 'partner'],
             ],
             onOptionSelected: (string) => relationship = string,

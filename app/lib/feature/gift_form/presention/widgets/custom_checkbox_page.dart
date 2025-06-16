@@ -21,54 +21,57 @@ class CustomCheckboxPage extends StatelessWidget {
       child: BlocBuilder<MultiSelectCubit, List<bool>>(
         builder: (context, selectedList) {
           final cubit = context.read<MultiSelectCubit>();
-          // Initialize selectedList based on optionSelectedValues
-          return SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: options.length * 200 + 32,
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.all(16),
-                    itemCount: options.length,
-                    itemBuilder: (context, index) {
-                      final isSelected = selectedList[index];
-                      return GestureDetector(
-                        onTap: () {
-                          cubit.toggleOption(index);
-                          List<String> selectedOptions = [];
-                          for (var i = 0; i < cubit.state.length; i++) {
-                            if (cubit.state[i]) {
-                              selectedOptions.add(options[i][1]);
+          return SingleChildScrollView(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: options.length / 2 * 300 + 200,
+              child: Column(
+                children: [
+                  SizedBox(height: 16),
+                  Text(
+                    title,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 16),
+                  SizedBox(
+                    width: options.length * 200 + 32,
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.all(16),
+                      itemCount: options.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        bool isSelected = selectedList[index];
+                        return GestureDetector(
+                          onTap: () {
+                            cubit.toggleOption(index);
+                            List<String> selectedOptions = [];
+                            for (var i = 0; i < cubit.state.length; i++) {
+                              if (cubit.state[i]) {
+                                selectedOptions.add(options[i][1]);
+                              }
                             }
-                          }
-                          onOptionSelected(selectedOptions);
-                        },
-                        child: buttonWidget(
-                          data: options[index],
-                          isSelected: isSelected,
-                          context: context,
-                          isRadioButton: false,
-                        ),
-                      );
-                    },
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 300,
-                      mainAxisExtent: 300,
-                      childAspectRatio: 1,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
+                            onOptionSelected(selectedOptions);
+                          },
+                          child: buttonWidget(
+                            data: options[index],
+                            isSelected: isSelected,
+                            context: context,
+                            isRadioButton: false,
+                          ),
+                        );
+                      },
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        mainAxisExtent: 250,
+                        childAspectRatio: 1,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
