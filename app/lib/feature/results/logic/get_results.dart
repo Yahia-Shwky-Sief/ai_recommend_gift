@@ -11,7 +11,7 @@ Future<String> getResults({
 }) async {
   final dio = Dio();
   const backendUrl =
-      'http://localhost:3000'; // Replace with backend URL if needed
+      'http://192.168.1.20:3000'; // Replace with backend URL if needed
   final response = await dio.post(
     '$backendUrl/api/v1/ai/ai_response/',
     options: Options(headers: {'Content-Type': 'application/json'}),
